@@ -1,0 +1,114 @@
+﻿<Window x:Class="SonyaPPprojectTwo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SonyaPPprojectTwo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="573" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Login Section -->
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="10" HorizontalAlignment="Center">
+            <TextBlock Text="Login" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBox x:Name="UsernameInput" Width="300" Margin="0,0,0,10" Text="Enter Username" GotFocus="UsernameInput_GotFocus" LostFocus="UsernameInput_LostFocus"/>
+            <PasswordBox x:Name="UserPasswordInput" Width="300" Margin="0,0,0,10" PasswordChanged="UserPasswordInput_PasswordChanged" GotFocus="UserPasswordInput_GotFocus" LostFocus="UserPasswordInput_LostFocus"/>
+            <Button Content="Login" Click="LoginButton_Click" Width="300" Margin="0,0,0,10"/>
+        </StackPanel>
+
+        <!-- Project Management Section -->
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10">
+            <TextBlock Text="Projects" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+            <ListBox x:Name="ProjectListBox" Width="350" Height="300" Margin="0,0,0,10"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Add Project" Click="AddProjectButton_Click" Width="150" Margin="5"/>
+                <Button Content="Edit Project" Click="EditProjectButton_Click" Width="150" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Task Management Section -->
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10">
+            <TextBlock Text="Tasks" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+            <ListBox x:Name="TaskListBox" Width="350" Height="300" Margin="0,0,0,10"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Add Task" Click="AddTaskButton_Click" Width="150" Margin="5"/>
+                <Button Content="Edit Task" Click="EditTaskButton_Click" Width="150" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Project Dialog -->
+        <Grid x:Name="ProjectDialogGrid" Visibility="Hidden" Background="White" Margin="10" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" Height="400">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Name:" Grid.Row="0" Grid.Column="0" Margin="10"/>
+            <TextBox x:Name="ProjectNameInput" Grid.Row="0" Grid.Column="1" Margin="10"/>
+
+            <TextBlock Text="Description:" Grid.Row="1" Grid.Column="0" Margin="10"/>
+            <TextBox x:Name="ProjectDescriptionInput" Grid.Row="1" Grid.Column="1" Margin="10"/>
+
+            <TextBlock Text="Start Date:" Grid.Row="2" Grid.Column="0" Margin="10"/>
+            <DatePicker x:Name="ProjectStartDateInput" Grid.Row="2" Grid.Column="1" Margin="10"/>
+
+            <TextBlock Text="End Date:" Grid.Row="3" Grid.Column="0" Margin="10"/>
+            <DatePicker x:Name="ProjectEndDateInput" Grid.Row="3" Grid.Column="1" Margin="10"/>
+
+            <TextBlock Text="Budget:" Grid.Row="4" Grid.Column="0" Margin="10"/>
+            <TextBox x:Name="ProjectBudgetInput" Grid.Row="4" Grid.Column="1" Margin="10"/>
+
+            <Button Content="Save" Grid.Row="5" Grid.ColumnSpan="2" Margin="10" Click="SaveProjectButton_Click"/>
+        </Grid>
+
+        <!-- Task Dialog -->
+        <Grid x:Name="TaskDialogGrid" Visibility="Hidden" Background="White" Margin="10" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" Height="400">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Name:" Grid.Row="0" Grid.Column="0" Margin="10"/>
+            <TextBox x:Name="TaskNameInput" Grid.Row="0" Grid.Column="1" Margin="10"/>
+
+            <TextBlock Text="Description:" Grid.Row="1" Grid.Column="0" Margin="10"/>
+            <TextBox x:Name="TaskDescriptionInput" Grid.Row="1" Grid.Column="1" Margin="10"/>
+
+            <TextBlock Text="Assigned User ID:" Grid.Row="2" Grid.Column="0" Margin="10"/>
+            <TextBox x:Name="TaskAssignedUserIDInput" Grid.Row="2" Grid.Column="1" Margin="10"/>
+
+            <TextBlock Text="Priority:" Grid.Row="3" Grid.Column="0" Margin="10"/>
+            <TextBox x:Name="TaskPriorityInput" Grid.Row="3" Grid.Column="1" Margin="10"/>
+
+            <TextBlock Text="Status:" Grid.Row="4" Grid.Column="0" Margin="10"/>
+            <TextBox x:Name="TaskStatusInput" Grid.Row="4" Grid.Column="1" Margin="10"/>
+
+            <Button Content="Save" Grid.Row="5" Grid.ColumnSpan="2" Margin="10" Click="SaveTaskButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>
